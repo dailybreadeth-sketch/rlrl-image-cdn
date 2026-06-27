@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RLRL Image CDN — 레알레알 이미지 에셋 허브</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0e0e0e;
+      color: #e8e8e2;
+      font-family: 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      padding: 48px 32px;
+    }
+    header {
+      border-bottom: 1px solid #2a2a2a;
+      padding-bottom: 24px;
+      margin-bottom: 40px;
+    }
+    header .brand { font-size: 11px; letter-spacing: 0.3em; color: #666; text-transform: uppercase; }
+    header h1 { font-size: 24px; font-weight: 300; letter-spacing: 0.05em; margin-top: 8px; }
+    header p { font-size: 13px; color: #555; margin-top: 6px; }
+    .category { margin-bottom: 40px; }
+    .category h2 {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #444;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    .url-grid { display: grid; gap: 12px; }
+    .url-item {
+      background: #161616;
+      border: 1px solid #222;
+      border-radius: 6px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .url-item .filename { font-size: 13px; color: #c8c8c0; font-family: monospace; }
+    .url-item .url {
+      font-size: 11px;
+      color: #444;
+      font-family: monospace;
+      flex: 1;
+      text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .copy-btn {
+      background: #222;
+      border: 1px solid #333;
+      color: #888;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover { background: #2a2a2a; color: #ccc; border-color: #444; }
+    .copy-btn.copied { background: #1a3a1a; color: #4a9a4a; border-color: #2a5a2a; }
+    .notice {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 12px;
+      color: #444;
+      line-height: 1.8;
+    }
+    .notice strong { color: #666; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Réal Réal · RLRL</div>
+    <h1>Image CDN Hub</h1>
+    <p>상세페이지에 연결된 이미지 에셋 관리 허브 — 파일을 같은 이름으로 덮어쓰면 상세페이지가 자동 반영됩니다.</p>
+  </header>
+
+  <div class="notice">
+    <strong>⚡ 사용 방법</strong><br>
+    1. 이미지를 수정하면 <strong>파일명을 그대로 유지</strong>한 채 이 저장소에 덮어쓰기하여 깃허브에 Push<br>
+    2. Vercel이 자동으로 재배포 → <strong>모든 연결된 상세페이지의 이미지가 즉시 갱신</strong>됩니다<br>
+    3. 캐시 버스팅이 필요하면 파일명 뒤에 <strong>?v=2</strong> 를 붙여주세요
+  </div>
+
+  <div class="category">
+    <h2>🧴 Shampoo — 로스카 샴푸</h2>
+    <div class="url-grid" id="shampoo-list">
+      <div class="url-item">
+        <span class="filename">shampoo_hero_01.jpg</span>
+        <span class="url">/images/shampoo/shampoo_hero_01.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/shampoo/shampoo_hero_01.jpg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">shampoo_hero_02.jpg</span>
+        <span class="url">/images/shampoo/shampoo_hero_02.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/shampoo/shampoo_hero_02.jpg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">shampoo_nukki_01.png</span>
+        <span class="url">/images/shampoo/shampoo_nukki_01.png</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/shampoo/shampoo_nukki_01.png')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">shampoo_detail_01.jpg</span>
+        <span class="url">/images/shampoo/shampoo_detail_01.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/shampoo/shampoo_detail_01.jpg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">shampoo_texture_01.jpg</span>
+        <span class="url">/images/shampoo/shampoo_texture_01.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/shampoo/shampoo_texture_01.jpg')">COPY</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>💧 Head Skin — 로스카 헤드스킨</h2>
+    <div class="url-grid">
+      <div class="url-item">
+        <span class="filename">headskin_hero_01.jpg</span>
+        <span class="url">/images/head-skin/headskin_hero_01.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/head-skin/headskin_hero_01.jpg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">headskin_nukki_01.png</span>
+        <span class="url">/images/head-skin/headskin_nukki_01.png</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/head-skin/headskin_nukki_01.png')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">headskin_ritual_01.jpg</span>
+        <span class="url">/images/head-skin/headskin_ritual_01.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/head-skin/headskin_ritual_01.jpg')">COPY</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="category">
+    <h2>🌿 Brand — 레알레알 브랜딩 에셋</h2>
+    <div class="url-grid">
+      <div class="url-item">
+        <span class="filename">brand_logo_dark.svg</span>
+        <span class="url">/images/brand/brand_logo_dark.svg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/brand/brand_logo_dark.svg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">brand_logo_light.svg</span>
+        <span class="url">/images/brand/brand_logo_light.svg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/brand/brand_logo_light.svg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">brand_hero_campaign.jpg</span>
+        <span class="url">/images/brand/brand_hero_campaign.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/brand/brand_hero_campaign.jpg')">COPY</button>
+      </div>
+      <div class="url-item">
+        <span class="filename">brand_manifesto_bg.jpg</span>
+        <span class="url">/images/brand/brand_manifesto_bg.jpg</span>
+        <button class="copy-btn" onclick="copyUrl(this, '/images/brand/brand_manifesto_bg.jpg')">COPY</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BASE = window.location.origin;
+    function copyUrl(btn, path) {
+      const fullUrl = BASE + path;
+      navigator.clipboard.writeText(fullUrl).then(() => {
+        btn.textContent = 'COPIED!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'COPY';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
